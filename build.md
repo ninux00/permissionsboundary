@@ -16,7 +16,7 @@
 
 Para configurar o ambiente, expanda e selecione a opção apropriada de acordo com as opções abaixo, realize as tarefas e então prossiga para **Tarefa 1**.
 
-??? informação  "Click aqui se você está em um *evento AWS* e  *AWS disponibilizou uma conta para você*" 
+**Informação**  "Siga as instruções abaixo se você está em um *evento AWS* e  *AWS disponibilizou uma conta para você*" 
 
 	<p style="font-size:20px;">
       **Passo 1**:  Logue no console e execute o CloudFormation template.
