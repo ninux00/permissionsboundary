@@ -6,9 +6,9 @@ Durante o workshop, tenha em mente que você precisa adicionar o Account ID (tro
 </p>
 
 !!! Dica
-    <p style="font-size:16px;">
-      As tarefas 1, 2 e 3 podem ser realizadas independentemente se você estiver trabalhando em grupo e quiser dividir as tarefas.
-    </p>
+<p style="font-size:16px;">
+As tarefas 1, 2 e 3 podem ser realizadas independentemente se você estiver trabalhando em grupo e quiser dividir as tarefas.
+</p>
 
 
 ## Instruções de configuração do ambiente
@@ -16,37 +16,36 @@ Durante o workshop, tenha em mente que você precisa adicionar o Account ID (tro
 Para configurar o ambiente, expanda e selecione a opção apropriada de acordo com as opções abaixo, realize as tarefas e então prossiga para **Tarefa 1**.
 
 **Informação**  "Siga as instruções abaixo se você está em um *evento AWS* e  *AWS disponibilizou uma conta para você*" 
-
-	<p style="font-size:20px;">
+<p style="font-size:20px;">
       **Passo 1**:  Logue no console e execute o CloudFormation template.
-    </p>
-	
-	**Console Login:** Seu time deve ter recebido um pedaço de papel com URL e as credenciais. Isso te permitirá fazer login na conta AWS.
+</p>
+
+**Console Login:** Seu time deve ter recebido um pedaço de papel com URL e as credenciais. Isso te permitirá fazer login na conta AWS.
     Depois de se autenticar na conta AWS, tenha certeza de selecionar a região us-east-2**(Ohio)** 
 
-	** Click no botão *Deploy to AWS*  abaixo para lançar a stack do CloudFormation. **
+** Click no botão *Deploy to AWS*  abaixo para lançar a stack do CloudFormation. **
 	
-	Region| Deploy
-	------|-----
-	US East 2 (Ohio) | <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=Perm-Bound-Adv&templateURL=https://s3-us-west-2.amazonaws.com/sa-security-specialist-workshops-us-west-2/identity-workshop/permissionboundary/identity-workshop-web-admins-advanced.yaml" target="_blank">![Deploy in us-east-2](./images/deploy-to-aws.png)</a>
+Region| Deploy
+------|-----
+US East 2 (Ohio) | <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=Perm-Bound-Adv&templateURL=https://s3-us-west-2.amazonaws.com/sa-security-specialist-workshops-us-west-2/identity-workshop/permissionboundary/identity-workshop-web-admins-advanced.yaml" target="_blank">![Deploy in us-east-2](./images/deploy-to-aws.png)</a>
 	
-	1. Click em **Next** na seção da página **Select Template**.
-	2. Click em **Next** na seção da página **Specify Details** (o nome da stack será preenchida automaticamente - você pode alterar ou deixar como está)
-	3. Click em **Next** na seção da página **Options**.
-	4. Finalmente, permita que o template crie Roles do IAM preenchendo o check box abaixo de **Capabilities** e click em **Create**.
-	5. Isso te trará de volta para a página de console do CloudFormation. Você pode recarregar a página para ver o progresso da criação da stack. Antes de continuar tenha certeza que o status está mostrando **CREATE_COMPLETE**.
+1. Click em **Next** na seção da página **Select Template**.
+2. Click em **Next** na seção da página **Specify Details** (o nome da stack será preenchida automaticamente - você pode alterar ou deixar como está)
+3. Click em **Next** na seção da página **Options**.
+4. Finalmente, permita que o template crie Roles do IAM preenchendo o check box abaixo de **Capabilities** e click em **Create**.
+5. Isso te trará de volta para a página de console do CloudFormation. Você pode recarregar a página para ver o progresso da criação da stack. Antes de continuar tenha certeza que o status está mostrando **CREATE_COMPLETE**.
 
-    <p style="font-size:20px;">
-      **Passo 2** : Conecte na IDE do AWS Cloud9
-    </p>
+<p style="font-size:20px;">
+**Passo 2** : Conecte na IDE do AWS Cloud9
+</p>
 	
-	1. Navegue para o console do <a href="https://us-east-2.console.aws.amazon.com/cloud9/home" target="_blank">AWS Cloud9</a>.
-	2. Click em **Open IDE** na página `workshop-environment` em baixo de **Your environments**
-	3. Click no ícone de **engrenagem** no canto superior direito para abrir as preferencias do Cloud9. Role para baixo e click na seção **AWS SETTINGS** e click  no botão próximo de **AWS Managed Temporary Credentials** para desabilitá-lo e feche a página de preferencias.
-	4. Agora abra uma nova aba do navegador e vá para o console AWS, selecione o serviço IAM. Dentro do console do IAM crie um novo usuário (tenha certeza de habilitar a opção **Programmatic access** durante o processo), na seção **Set permisisons** selecione **Attach existing policies directly** e selecione a política **AdministratorAccess**, ao final do processo baixe o arquivo .csv contendo as credenciais.
-	5. Volte para o console do Cloud9. Na parte inferior da tela você deve ver um terminal do linux, digite o comando `aws configure` e aperte a tecla "enter". Cole o **AWS Access Key ID** obtido através do arquivo .csv gerado no passo anterior e aperte a tecla "enter", então cole o **AWS Secret Access Key** e aperte a tecla "enter", então na opção **Default region name** digite `us-east-2`. A seguir aperte a tecla "enter" até sair deste menu.
-	6. Agora você pode executar comandos via Cloud9 IDE utilizando as credenciais do usuário IAM criado anteriormente.
-	7. Vá para **Tarefa 1**.
+1. Navegue para o console do <a href="https://us-east-2.console.aws.amazon.com/cloud9/home" target="_blank">AWS Cloud9</a>.
+2. Click em **Open IDE** na página `workshop-environment` em baixo de **Your environments**
+3. Click no ícone de **engrenagem** no canto superior direito para abrir as preferencias do Cloud9. Role para baixo e click na seção **AWS SETTINGS** e click  no botão próximo de **AWS Managed Temporary Credentials** para desabilitá-lo e feche a página de preferencias.
+4. Agora abra uma nova aba do navegador e vá para o console AWS, selecione o serviço IAM. Dentro do console do IAM crie um novo usuário (tenha certeza de habilitar a opção **Programmatic access** durante o processo), na seção **Set permisisons** selecione **Attach existing policies directly** e selecione a política **AdministratorAccess**, ao final do processo baixe o arquivo .csv contendo as credenciais.
+5. Volte para o console do Cloud9. Na parte inferior da tela você deve ver um terminal do linux, digite o comando `aws configure` e aperte a tecla "enter". Cole o **AWS Access Key ID** obtido através do arquivo .csv gerado no passo anterior e aperte a tecla "enter", então cole o **AWS Secret Access Key** e aperte a tecla "enter", então na opção **Default region name** digite `us-east-2`. A seguir aperte a tecla "enter" até sair deste menu.
+6. Agora você pode executar comandos via Cloud9 IDE utilizando as credenciais do usuário IAM criado anteriormente.
+7. Vá para **Tarefa 1**.
 
 ---
 
