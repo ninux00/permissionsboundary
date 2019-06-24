@@ -1,10 +1,9 @@
 # Permissions boundaries workshop <small> Fase de Construção </small>
 
-
 <large> **Atenção** </large>
-    <p style="font-size:16px;">
-      Durante o workshop, tenha em mente que você precisa adicionar o Account ID (troque <ACCOUNT_ID>), use corretamente o "path" e altere a região especificada caso necessário (caso esteja realizando este workshop através de um evento da AWS, simplesmente use a região já especificada "us-east-2"). A falta de qualquer um desses componentes pode resultar em problemas e erros como **"An error occurred (MalformedPolicyDocument) when calling the CreatePolicy operation: The policy failed legacy parsing"**.
-    </p>
+<p style="font-size:16px;">
+Durante o workshop, tenha em mente que você precisa adicionar o Account ID (troque <ACCOUNT_ID>), use corretamente o "path" e altere a região especificada caso necessário (caso esteja realizando este workshop através de um evento da AWS, simplesmente use a região já especificada "us-east-2"). A falta de qualquer um desses componentes pode resultar em problemas e erros como **"An error occurred (MalformedPolicyDocument) when calling the CreatePolicy operation: The policy failed legacy parsing"**.
+</p>
 
 !!! Dica
     <p style="font-size:16px;">
