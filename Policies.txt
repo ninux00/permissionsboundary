@@ -1,0 +1,163 @@
+Policy: SCP 
+Organizations Tree:
+Root <-- Policy here
+    NAMER 
+        DivisionA
+            Sandbox 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: SCP 
+Organizations Tree:
+Root 
+    NAMER <-- Policy here
+        DivisionA
+            Sandbox 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ProtectBucket",
+            "Effect": "Deny",
+            "Action": [
+                "s3:PutBucketPublicAccessBlock"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-super-secret-data"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: SCP 
+Organizations Tree:
+Root 
+    NAMER
+        DivisionA <-- Policy here
+            Sandbox 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: SCP 
+Organizations Tree:
+Root 
+    NAMER <-- Policy here
+        DivisionA
+            Sandbox <-- Policy here
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": “AllowAll”,
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: Permissions Boundary
+Attached to: arn:aws:iam::123456789012:role/dev1
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allowallonsecretdatabucket",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::my-super-secret-data/*",
+                "arn:aws:s3:::my-super-secret-data"
+            ]
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: Session
+Passed when assuming: arn:aws:iam::123456789012:role/dev1
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPutonsecretdatabucket",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": [
+                "arn:aws:s3:::my-super-secret-data/*"
+            ]
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: Identity-Based
+Attached to arn:aws:iam::123456789012:role/dev1
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+——————————————————————————————
+
+Policy: Resource-Based
+Attached to arn:aws:s3:::my-super-secret-data
+
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid”:”AllowActionsbyDevRole”,
+      "Effect":"Allow",
+      "Principal": {"AWS": ["arn:aws:iam::123456789012:role/dev1]},
+      "Action":["s3:PutObject","s3:DeleteObject],
+      "Resource":["arn:aws:s3:::my-super-secret-data/*"],
+    }
+  ]
+}
+
