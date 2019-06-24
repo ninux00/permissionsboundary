@@ -1,7 +1,7 @@
 # Permissions boundary workshop <small> Advanced edition </small>
 ## Overview
 
-In this workshop you will learn how to use permissions boundaries to truly delegate administration in AWS. This new feature can be challenging but this workshop provides an in-depth hands-on exercise to help you master it.
+Neste workshop você irá aprender como utilizar o recurso "permissions boundaries" para verdadeiramente delegar administração na AWS. Esta nova feature pode ser desafiadora mas este workshop provê um exercício prático que vai te ajudar a ser um mestre no assunto.
 
 **AWS Service/Feature Coverage**: 
 
@@ -10,41 +10,37 @@ In this workshop you will learn how to use permissions boundaries to truly deleg
 * AWS IAM <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html" target="_blank">friendly names and paths</a>
 * AWS <a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank">Lambda</a>
 
-The three elements of a permissions boundary are represented below. When your team does the **BUILD** tasks in this section you will act as the admins. When your team does the **VERIFY** tasks in the next section you will act as the delegated admins (webadmins).  
+Os três elementos principais do "permisisons boundary" estão representados a seguir. Quando você/seu time estiverem na fase de **CONSTRUÇÃO**, nesta seção vocês irão atuar como adminsitradores. Quando você/seu time estiverem na fase **VERIFICAÇÃO** vocês irão atuar como admnistradores delegados (webadmins).
 
-![mechanism](./images/permission-boundaries.png)
+[Mechanismo](./images/permission-boundaries.png)
 
-### Scenario
+### Cenário
 
-Your company has deployed a production three tier web application on AWS. Various teams work on different aspects of the architecture including the web admins who need to be able to create IAM roles for Lambda functions. In order to let them quickly iterate it was decided that permissions boundaries would be used to delegate permissions to the web admins so they can create the roles needed without being able to escalate their permissions or impact the resources of other teams. It is your assignment to set their permissions up and test them.
- 
+A empresa em que você trabalha fez deploy de uma aplicação web três camadas na AWS. Vários times trabalham em diferentes aspectos da arquitetura incluindo os admisnistradores web (webadmins) que precisam ter a abilidade de criar Roles do IAM para funções Lambda. Para permitir que eles atuem de forma rápida foi decidido que seria utilizado "permissions boundaries" para delegar as permissões para os webadmins para que eles criem as roles sem a necessidade de solicitar esta tarefa para outros times. É sua tarefa criar as configurações e permissões necessárias para os webadmins e testá-las.
+
 ## Agenda
 
-The round consists of a <a href="./build/" target="_blank">**BUILD**</a> phase followed by a <a href="./verify/" target="_blank">**VERIFY**</a> phase. 
+O workshop consiste de uma fase de <a href="./build/" target="_blank">**CONSTRUÇÃO**</a> seguida por uma fase de <a href="./verify/" target="_blank">**VERIFICAÇÃO**</a>
 
-### Phases 
-**BUILD** (60 min): First each team will act as the admins of the account and carry out the activities involved in the **BUILD** phase where they will set up access for the web admins. 
 
-Then each team will hand credentials for the webadmins IAM role in their account to another team to carry out the **VERIFY** phase. 
+### Fases 
+**CONSTRUÇÃO** (60 min): Primeiramente cada individuo/time atuará como o administrador da conta e executará as atividades relacionadas com a fase de **CONSTRUÇÃO** onde será criado o acesso para os administradores web.
 
-**VERIFY** (30 min): In the **Verify** phase each team will then act as the web admins validate that the requirements were set up correctly in the **BUILD** phase.
+E então cada individuo/time irá fornecer manualmente as credenciais da Role IAM para os webamins em suas contas para outro individuo/time realizar as tarefas da fase de **VERIFICAÇÃO**.
 
-!!! info "Team or Individual Exercise"
-	This workshop can be done as a team exercise or individually. If done as part of an AWS sponsored event then you will most likely be split into teams of around 2-3 people (you are of course free to work on your own.) If you are working in a team then try to divide up the tasks. 
+**VERIFICAÇÃO** (30 min): Na fase de **VERIFICAÇÃO** cada individuo/time irá atuar como webadmins validando que os requisitos foram configurados corretamente na fase de **CONSTRUÇÃO**.
 
-### Presentation
 
-If you are doing this workshop as part of an AWS event then there will usually be a presentation (lasting about 30 minutes) before the hands-on exercise. Here is the <a href="./presentation.pdf" target="_blank">presentation deck</a>.
+!!! Informação "Exercício em time ou Individualemnte"
+	Este workshop pode ser executado como exercício em time ou individualmente. Se realizado como parte de um evento AWS, então vocês provavelmente serão divididos em times entre 2-3 pessoas (você está livre para escolher trabalhar individualemnte se desejar). Se estiver trabalhando em time tente dividir as tarefas entre os membros do time.
 
-## Requirements
+## Requisitos
 
-??? info "Click here for the account architecture"
+<large>**[Click aqui para ver a aquitetura da conta](./images/architecture.png)**</large>
 
-	Account architecture: ![architecture](./images/architecture.png)
+O objetivo deste workshop é realizar as configurações para os webadmins para que eles possam criar uma Role IAM e anexá-la à função Lambda que será utilizada para ler um bucket S3. Os webadmins precisam somente das permissões necessarias para realizar isso sem a possibilidade de escalarem suas permissões ou impactarem nos recursos de outros times na mesma conta. Os webadmins devem ter acesso somente aos recursos a seguir:
 
-The goal of this workshop is to set up the web admins so they can create an IAM role and attach it to a Lambda function which will then read an S3 bucket. The web admins need the necessary permissions to do this without also being able to escalate their permissions or impact the resources of other teams in the same AWS account. The web admins should only have access to the following resources:
+1. Policies e Roles do IAM criadas por eles. 
+2. S3 bucket: As Roles do IAM criadas pelos webadmins deverão somente permitir a listagem dos arquivos de log na pasta webadmins  dentro do bucket que começa com `"shared-logging-"` e termina com `"-data"`.
 
-1. IAM policies and roles they create 
-2. S3 bucket: The roles the web admins create should only be allowed to list the log files in the webadmins folder of the bucket that starts with `"shared-logging-"` and ends with `"-data"`
-
-<large>**[Click here to go to the BUILD phase](./build.md)**</large>
+<large>**[Click aqui para ir para a fase de **CONSTRUÇÃO**](./build.md)**</large>

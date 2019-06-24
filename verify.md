@@ -1,21 +1,22 @@
-# Permission boundaries workshop <small> Verify phase</small>
+# Permission boundaries workshop <small>Fase de VERIFICAÇÃO</small>
 
+Agora é a hora da **VERIFICAÇÃO** das configurações realizadas pelos administradores colocando o chapéu de webadmins. Como webadmins você irá realizar o seguinte:
 It's now time **VERIFY** the setup the admins did by putting on the webadmins hat. As the webadmins you will check that you can do the following: 
 
-1. Create an IAM policy
-2. Create an IAM role (and attach that policy) 
-3. Create a Lambda function (and attach that role)
+1. Criar uma política do IAM (usando o perfil de webadmins)
+2. Criar uma Role do IAM (anexar a política criada como webadmins)
+3. Criar uma função Lambda (anexar a role criada como webadmins)
 
-If doing this as part of an AWS event you should have received the following information from another team. You will need the **Account ID** and the **Resource restriction** information to complete the tasks in this phase.
+Se você está participando de um evento da AWS você deve ter recebido um formulário contendo as seguintes informações de outro time. Você precisará do **Account ID** e do **Resource Restriction** para completar as tarefas nesta fase.
 
 ```
 Webadmins role ARN:	arn:aws:iam::`ACCOUNT_ID_FROM_OTHER_TEAM`:role/**webadmins**
-Resource restriction for both the roles and policies: /webadmins/`Resource restriction`
+Resource Restriction ("path" que deve ser utilizado para roles e políticas): /webadmins/**`Resource Restriction`**
 Permissions boundary name: **webadminspermissionsboundary**
 Permission policy name: **webadminspermissionpolicy**
 ```
 
-* To carry out these tasks as the webadmins, you will need to assume that role. To make that process easier, add the following to the `~/.aws/config` file:
+* Para executar as tarefas como webadmins, você vai precisar assumir a role webadmins. Para facilitar este processo, adicione o conteúdo a seguir ao arquivo `~/.aws/config`:
 
 ```
 [profile webadmins]
@@ -23,24 +24,24 @@ role_arn = arn:aws:iam::ACCOUNT_ID_FROM_OTHER_TEAM:role/webadmins
 source_profile = default
 ```
 
-**When you want to reference a profile other then the default one you need to add the `--profile` parameter to the CLI command. Since we are naming this profile webadmins, you will see that `--profile webadmins` has been added to all the commands in this phase.**
+**Quando você quiser executar um comando referenciando outro perfil diferente do default, adicione o parametro `--profile` do aws_CLI na linha de comando. Como estamos chamando esse perfil de webadmins você verá que `--profile webadmins` foi adicionado ao final de todos os comandos nesta fase.**
 
-??? info "Application architecture"
+??? informação "Arquitetura da aplicação"
 	
 	![image1](./images/architecture.png)
 
 ---
 
-!!! Attention
+!!! Atenção
     <p style="font-size:16px;">
-      As in the Build phase, keep in mind where you need to add the Account ID, correctly use pathing and change the region specified if needed (although if you are taking this as part of an AWS event, just use the already specified us-east-1.) Also you will need to use the --profile parameter for all of the commands in the following tasks.
+      Como na fase de Construção, tenha em mente que você precisa adicinonar o Account ID, usar corretamente o "path" e alterar a região especificada caso necessário (caso esteja participando de um evento da AWS, simplemente utilize a região especificada us-east-2). Você também precisa usar o parametro `--profile` em todos os comandos para as tarefas a seguir.
     </p>
 
-## Task 1 <small>Create a policy</small>
+## Tarefa 1 - <small>Criar a política</small>
 	
-First you will create a permission policy which just needs to allow log file creation and s3:ListBucket. You are in a hurry though, like many developers, and give the role full S3 permissions. The policy you create here will later be attached to the role you create in Task 2 which will then be passed to a Lambda function you will create in **Task 3**.
+Primeiramente você criará a política de permissionamento que permitirá somente as ações Create log groups, create log streams, put logs e s3:ListBucket. Você está no fervor do dia a dia, como muitos desenvolvedores e dará acesso total ao S3 para a role. A política que criaremos aqui será anexada a uma role criada durante **Tarefa 2** que então será anexada a uma função Lambda criada durante a **Tarefa 3**.
 
-* Use the following JSON to create a file named **`verifypolicydoc.json`**: 
+* Use o JSON a seguir para criar um arquivo chamado **`verifypolicydoc.json`**:
 ```json
 {
   "Version": "2012-10-17",
@@ -58,17 +59,21 @@ First you will create a permission policy which just needs to allow log file cre
   ]
 }
 ```
-* Create the policy (**there is a key parameter missing from the command below. Check the <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> AWS CLI documentation to determine the missing parameter. </a> **)
+* Crie a política 
 ```
 aws iam create-policy --policy-name NAME_OF_POLICY --policy-document file://verifypolicydoc.json --profile webadmins
 ```
-<!-- `aws iam create-policy --policy-name NAME_OF_POLICY --path /webadmins/ --policy-document file://verifypolicydoc.json` -->
+(**Note que existe um parâmetro chave faltando no comando acima. Como webadmins, possuímos uma restrição na criação de recursos como Políticas do IAM**)
+* Comando contendo o parâmetro `--path` faltante (Resource Restrictions). **Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>**
+```
+aws iam create-policy --policy-name NAME_OF_POLICY --path /webadmins/????/ --policy-document file://verifypolicydoc.json
+```
 
-## Task 2 <small>Create a role</small>
+## Task 2 - <small>Criar a role</small>
 
-The role you create here will be passed to the Lambda function you create in the next task.
+A role que você vai criar aqui será anexada a função Lambda que você criará no próximo passo.
 
-* Use the following JSON to create a file named **`verifytrustpolicy.json`**: 
+* Use o JSOM a seguir para criar um arquivo chamado **`verifytrustpolicy.json`**:
 ```json
 {
   "Version": "2012-10-17",
@@ -81,21 +86,26 @@ The role you create here will be passed to the Lambda function you create in the
   }
 }
 ```
-* Create the role (**there is a key parameter missing from the command below. Check the <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> AWS CLI documentation to determine the missing parameter. </a> **)
+* Crie a role
 ```
-aws iam create-role --role-name NAME_OF_ROLE --path /webadmins/ --assume-role-policy-document file://verifytrustpolicy.json --profile webadmins
+aws iam create-role --role-name NAME_OF_ROLE --path /webadmins/????/ --assume-role-policy-document file://verifytrustpolicy.json --profile webadmins
 ```
-<!-- `aws iam create-role --role-name NAME_OF_ROLE --path /NAME_OF_PATH/ --assume-role-policy-document file://verifytrustpolicy.json --permissions-boundary arn:aws:iam::ACCOUNT_ID_FROM_OTHER_TEAM:policy/webadminspermissionsboundary` -->
-* Attach the policy you created in **Task 1** to the role:
+(**Note que existe um outro parâmetro chave faltando no comando acima. Como webadmins, precisamos temos nosso perímetro de acões limitado "permissions boundary" e sempre que criamos roles ou usuários precisamos adicionar esses limites limitando as ações deles também.**)
+* Comando contendo o parâmetro `--permissions-boundary` faltante. **Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>** 
+```
+aws iam create-role --role-name NAME_OF_ROLE --path /webadmins/????/ --assume-role-policy-document file://verifytrustpolicy.json --permissions-boundary arn:aws:iam::ACCOUNT_ID_FROM_OTHER_TEAM:policy/webadminspermissionsboundary
+```
+
+* Anexe a política criada na **Tarefa 1** na role:
 ```
 aws iam attach-role-policy --policy-arn arn:aws:iam::<ACCOUNT_ID_FROM_OTHER_TEAM>:policy/webadmins/NAME_OF_POLICY --role-name NAME_OF_ROLE --profile webadmins
 ```
-		
-## Task 3 <small>Create and test a Lambda function</small>
 
-Finally, you will create a **Node.js 8.10** Lambda function using the sample code below and pass the IAM role you just created:
- 
-* Create a file named **`index.js`** using the code below. Replace `"SHARED_LOGGING_BUCKET_NAME"` with the name of bucket that begins with `"shared-logging-"` and ends in `"-data"`. In order to get the bucket name, just run `aws s3 ls --profile webadmins`.)
+## Tarefa 3 - <small>Criar e testar a função Lambda</small>
+
+Finalmente, você irá criar uma função Lambda usando **Node.js 8.10**, para isso use o codigo de exemplo abaixo e passe a role do IAM criada no passo anterior:
+
+* Crie um arquivo chamado **`index.js`** usando o código abaixo. Altere `"SHARED_LOGGING_BUCKET_NAME"` com o nome do bucket que inicia com `"shared-logging-"` e termina com `"-data"`. (Para obter o nome do bucket, execute o comando `aws s3 ls --profile webadmins`)
 
 ``` node
 const AWS = require('aws-sdk');
@@ -119,39 +129,39 @@ async function getKeys(params, keys){
   }
 }
 ```
-* Zip the index.js file for upload to Lambda
+* Compacte o arquivo index.js para fazer o upload para o Lambda
 ```
 zip lambdafunction.zip index.js
 ```
-* Create a Lambda function
+* Crie a função Lambda
 ```
-aws lambda create-function --function-name verifyfunction --runtime nodejs8.10 --role arn:aws:iam::<ACCOUNT_ID_FROM_OTHER_TEAM>:role/webadmins/NAME_OF_ROLE --handler index.handler --region us-east-1 --zip-file fileb://lambdafunction.zip --profile webadmins
+aws lambda create-function --function-name verifyfunction --runtime nodejs8.10 --role arn:aws:iam::<ACCOUNT_ID_FROM_OTHER_TEAM>:role/webadmins/NAME_OF_ROLE --handler index.handler --region us-east-2 --zip-file fileb://lambdafunction.zip --profile webadmins
 ```
-* Invoke the Lambda function and make sure it is generating logs in CloudWatch logs and that it is able to list the objects in the bucket.
+* Invoque a funçnao Lambda para ter certeza que ela está gerando logs no Cloudwatch logs e também para validar se ela consegue listar os objetos no bucket.
 ```
-aws lambda invoke --function-name verifyfunction --region us-east-1 --invocation-type RequestResponse outputfile.txt --profile webadmins
+aws lambda invoke --function-name verifyfunction --region us-east-2 --invocation-type RequestResponse outputfile.txt --profile webadmins
 ```
-* Examine the output file. It should show a number of log files in the S3 bucket that the Lambda function read. 
+* Examine o arquivo "outputfile.txt". Ele deverá mostra o número de arquivos de log dentro do bucket S3 que a função Lambda acabou de ler.
 
-If you see files marked that **webadmins/you-should-SEE-this-file--webadmins...** then you have successfully verified that the webadmins can do their job. Congratulations!
+Se você ver arquivos marcados como **webadmins/you-should-SEE-this-file--webadmins...** então você teve sucesso ao verificar que os webadmins conseguem fazer o seu trabalho. Parabéns!!
 
-## Task 4 <small>Cleanup</small>
+## Tarefa 4 - <small>Limpeza do ambiente</small>
 
-To cleanup you need to delete the CloudFormation stack named `Perm-Bound-Adv` (this will also remove the Cloud9 stack) and the IAM resources you created. Run the following commands:
+Para remover os recursos criados por este workshop você deve deletar a stack do CloudFormation chamada `Perm-Bound-Adv` (isso também removerá a stack criada para o Cloud9) e também os recursosdo IAM criados por você. Execute os comandos a seguir:
 
-**Delete the webadmins role**:
+**Delete a role webadmins**:
 ```
 aws iam delete-role --role-name webadmins
 ```
-**Delete the permission policy**:
+**Delete a política de permissionamento**:
 ```
 aws iam delete-policy --policy-arn arn:aws:iam::<ACCOUNT_ID>:policy/webadminspermissionpolicy
 ```
-**Delete the permissions boundary**:
+**Delete a "permissions boundary"**:
 ```
 aws iam delete-policy --policy-arn arn:aws:iam::<ACCOUNT_ID>:policy/webadminspermissionsboundary
 ```
-**Delete the CloudFormation stack**:
+**Delete a stack do CloudFormation**:
 ```
 aws cloudformation delete-stack --stack-name Perm-Bound-Adv
 ```
