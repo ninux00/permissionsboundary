@@ -26,16 +26,16 @@ source_profile = default
 
 **Quando você quiser executar um comando referenciando outro perfil diferente do default, adicione o parametro `--profile` do aws_CLI na linha de comando. Como estamos chamando esse perfil de webadmins você verá que `--profile webadmins` foi adicionado ao final de todos os comandos nesta fase.**
 
-??? informação "Arquitetura da aplicação"
+??? **Informação** "Arquitetura da aplicação"
 	
-	![image1](./images/architecture.png)
+![image1](./images/architecture.png)
 
 ---
 
-!!! Atenção
-    <p style="font-size:16px;">
+!!! **Atenção**
+<p style="font-size:16px;">
       Como na fase de Construção, tenha em mente que você precisa adicinonar o Account ID, usar corretamente o "path" e alterar a região especificada caso necessário (caso esteja participando de um evento da AWS, simplemente utilize a região especificada us-east-2). Você também precisa usar o parametro `--profile` em todos os comandos para as tarefas a seguir.
-    </p>
+</p>
 
 ## Tarefa 1 - <small>Criar a política</small>
 	
@@ -64,11 +64,12 @@ Primeiramente você criará a política de permissionamento que permitirá somen
 aws iam create-policy --policy-name NAME_OF_POLICY --policy-document file://verifypolicydoc.json --profile webadmins
 ```
 (**Note que existe um parâmetro chave faltando no comando acima. Como webadmins, possuímos uma restrição na criação de recursos como Políticas do IAM**)
+<details open>
 * Comando contendo o parâmetro `--path` faltante (Resource Restrictions). **Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>**
 ```
 aws iam create-policy --policy-name NAME_OF_POLICY --path /webadmins/????/ --policy-document file://verifypolicydoc.json
 ```
-
+</details>
 ## Task 2 - <small>Criar a role</small>
 
 A role que você vai criar aqui será anexada a função Lambda que você criará no próximo passo.
