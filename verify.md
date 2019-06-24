@@ -28,9 +28,9 @@ source_profile = default
 
 **Quando você quiser executar um comando referenciando outro perfil diferente do default, adicione o parametro `--profile` do aws_CLI na linha de comando. Como estamos chamando esse perfil de webadmins você verá que `--profile webadmins` foi adicionado ao final de todos os comandos nesta fase.**
 
-??? **Informação** "Arquitetura da aplicação"
-	
-![image1](./images/architecture.png)
+**Informação** "Arquitetura da aplicação"
+
+![Image1](./architecture.png)
 
 ---
 
