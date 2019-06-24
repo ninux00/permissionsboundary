@@ -63,11 +63,11 @@ Primeiramente você criará a política de permissionamento que permitirá somen
 ```
 aws iam create-policy --policy-name NAME_OF_POLICY --policy-document file://verifypolicydoc.json --profile webadmins
 ```
-(**Note que existe um parâmetro chave faltando no comando acima. Como webadmins, possuímos uma restrição na criação de recursos como Políticas do IAM**)
+(**Note que existe um parâmetro chave faltando no comando acima. Como webadmins, possuímos uma restrição na criação de recursos como Políticas do IAM**) **Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>**
 
 <details open>
 	
-* Comando contendo o parâmetro `--path` faltante (Resource Restrictions). **Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>**
+* Comando contendo o parâmetro `--path` faltante (Resource Restrictions). 
 ```
 aws iam create-policy --policy-name NAME_OF_POLICY --path /webadmins/????/ --policy-document file://verifypolicydoc.json
 ```
