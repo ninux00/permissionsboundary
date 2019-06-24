@@ -36,7 +36,7 @@ E então cada individuo/time irá fornecer manualmente as credenciais da Role IA
 
 ## Requisitos
 
-<large>**[Click aqui para ver a aquitetura da conta](./architecture.png)**</large>
+![Aquitetura da conta](./architecture.png)
 
 O objetivo deste workshop é realizar as configurações para os webadmins para que eles possam criar uma Role IAM e anexá-la à função Lambda que será utilizada para ler um bucket S3. Os webadmins precisam somente das permissões necessarias para realizar isso sem a possibilidade de escalarem suas permissões ou impactarem nos recursos de outros times na mesma conta. Os webadmins devem ter acesso somente aos recursos a seguir:
 
