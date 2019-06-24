@@ -16,9 +16,8 @@ As tarefas 1, 2 e 3 podem ser realizadas independentemente se você estiver trab
 Para configurar o ambiente, expanda e selecione a opção apropriada de acordo com as opções abaixo, realize as tarefas e então prossiga para **Tarefa 1**.
 
 **Informação**  "Siga as instruções abaixo se você está em um *evento AWS* e  *AWS disponibilizou uma conta para você*" 
-<p style="font-size:20px;">
-      **Passo 1**:  Logue no console e execute o CloudFormation template.
-</p>
+
+**Passo 1**:  Logue no console e execute o CloudFormation template.
 
 **Console Login:** Seu time deve ter recebido um pedaço de papel com URL e as credenciais. Isso te permitirá fazer login na conta AWS.
     Depois de se autenticar na conta AWS, tenha certeza de selecionar a região us-east-2**(Ohio)** 
@@ -35,9 +34,7 @@ US East 2 (Ohio) | <a href="https://console.aws.amazon.com/cloudformation/home?r
 4. Finalmente, permita que o template crie Roles do IAM preenchendo o check box abaixo de **Capabilities** e click em **Create**.
 5. Isso te trará de volta para a página de console do CloudFormation. Você pode recarregar a página para ver o progresso da criação da stack. Antes de continuar tenha certeza que o status está mostrando **CREATE_COMPLETE**.
 
-<p style="font-size:20px;">
 **Passo 2** : Conecte na IDE do AWS Cloud9
-</p>
 	
 1. Navegue para o console do <a href="https://us-east-2.console.aws.amazon.com/cloud9/home" target="_blank">AWS Cloud9</a>.
 2. Click em **Open IDE** na página `workshop-environment` em baixo de **Your environments**
