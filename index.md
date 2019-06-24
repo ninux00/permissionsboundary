@@ -12,7 +12,7 @@ Neste workshop você irá aprender como utilizar o recurso "permissions boundari
 
 Os três elementos principais do "permisisons boundary" estão representados a seguir. Quando você/seu time estiverem na fase de **CONSTRUÇÃO**, nesta seção vocês irão atuar como adminsitradores. Quando você/seu time estiverem na fase **VERIFICAÇÃO** vocês irão atuar como admnistradores delegados (webadmins).
 
-[Mechanismo](./images/permission-boundaries.png)
+[Mechanismo](./permission-boundaries.png)
 
 ### Cenário
 
