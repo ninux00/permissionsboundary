@@ -71,7 +71,7 @@ Root
 Policy: SCP 
 Organizations Tree:
 Root 
-    NAMER <-- Policy here
+    NAMER 
         DivisionA
             Sandbox <-- Policy here
 
