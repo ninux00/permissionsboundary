@@ -1,4 +1,6 @@
-# Permission boundaries workshop <small>Fase de VERIFICAÇÃO</small>
+# Permission boundaries workshop 
+
+<small>Fase de VERIFICAÇÃO</small>
 
 Agora é a hora da **VERIFICAÇÃO** das configurações realizadas pelos administradores colocando o chapéu de webadmins. Como webadmins você irá realizar o seguinte:
 It's now time **VERIFY** the setup the admins did by putting on the webadmins hat. As the webadmins you will check that you can do the following: 
