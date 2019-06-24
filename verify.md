@@ -13,7 +13,7 @@ Se você está participando de um evento da AWS você deve ter recebido um formu
 
 ```
 Webadmins role ARN:	arn:aws:iam::`ACCOUNT_ID_FROM_OTHER_TEAM`:role/webadmins
-Resource Restriction ("path" que deve ser utilizado para roles e políticas): /webadmins/????
+Resource Restriction ("path" que deve ser utilizado para roles e políticas): /webadmins/`????`
 Permissions boundary name: webadminspermissionsboundary
 Permission policy name: webadminspermissionpolicy
 ```
