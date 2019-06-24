@@ -12,10 +12,10 @@ It's now time **VERIFY** the setup the admins did by putting on the webadmins ha
 Se você está participando de um evento da AWS você deve ter recebido um formulário contendo as seguintes informações de outro time. Você precisará do **Account ID** e do **Resource Restriction** para completar as tarefas nesta fase.
 
 ```
-Webadmins role ARN:	arn:aws:iam::`ACCOUNT_ID_FROM_OTHER_TEAM`:role/**webadmins**
-Resource Restriction ("path" que deve ser utilizado para roles e políticas): /webadmins/**`Resource Restriction`**
-Permissions boundary name: **webadminspermissionsboundary**
-Permission policy name: **webadminspermissionpolicy**
+Webadmins role ARN:	arn:aws:iam::`ACCOUNT_ID_FROM_OTHER_TEAM`:role/webadmins
+Resource Restriction ("path" que deve ser utilizado para roles e políticas): /webadmins/????
+Permissions boundary name: webadminspermissionsboundary
+Permission policy name: webadminspermissionpolicy
 ```
 
 * Para executar as tarefas como webadmins, você vai precisar assumir a role webadmins. Para facilitar este processo, adicione o conteúdo a seguir ao arquivo `~/.aws/config`:
