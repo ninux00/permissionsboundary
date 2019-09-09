@@ -3,7 +3,6 @@
 ## <small>Fase de VERIFICAÇÃO</small>
 
 Agora é a hora da **VERIFICAÇÃO** das configurações realizadas pelos administradores colocando o chapéu de webadmins. Como webadmins você irá realizar o seguinte:
-It's now time **VERIFY** the setup the admins did by putting on the webadmins hat. As the webadmins you will check that you can do the following: 
 
 1. Criar uma política do IAM (usando o perfil de webadmins)
 2. Criar uma Role do IAM (anexar a política criada como webadmins)
