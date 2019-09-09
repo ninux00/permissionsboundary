@@ -125,7 +125,7 @@ aws iam create-policy --policy-name webadminspermissionsboundary --policy-docume
 ## Task 3 - <small>Criar a política de permissões para os webadmins</small>
 
 !!! Atenção 
-	**IMPORTANTE!!!!** -  Os pontos de interrogação **`????`** na política abaixo devem ser alterados para algo que atuará como uma restrição na a criação dos recursos. Como resultado final teremos como requisito um "path" para as roles e políticas criadas pelos webadmins. Alterando os **`????`** é um dos desafios principais deste workshop e provavelmente a parte mais confusa. Fale com um facilitador se você tiver qualquer dificuldade com essa parte. 
+	**IMPORTANTE!!!!** -  Os pontos de interrogação **`????`** na política abaixo devem ser alterados para algo que atuará como uma restrição na criação de recursos criados pela role "webadmins". Por exemplo, o nome de um determinado time, "ProductXteam". Desta forma, limitamos o namespace ou path (caminho) para as roles e políticas criadas pelos webadmins. Alterando os **`????`** é um dos desafios principais deste workshop e provavelmente a parte mais confusa. Fale com um facilitador se você tiver qualquer dificuldade com essa parte. 
 
 A seguir você criará a política que será anexada a role utilizada pelos webadmins.
 
