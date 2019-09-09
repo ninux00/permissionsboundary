@@ -97,7 +97,7 @@ A role que você vai criar aqui será anexada a função Lambda que você criar�
 ```
 aws iam create-role --role-name NAME_OF_ROLE --path /webadmins/????/ --assume-role-policy-document file://verifytrustpolicy.json --profile webadmins
 ```
-(**Note que existe um outro parâmetro chave faltando no comando acima. Como webadmins,temos nosso perímetro de acões limitado "permissions boundary" e sempre que criamos recursos como roles ou usuários, precisamos adicionar esses limites de forma hereditaria, esses usuários e roles herdam essas permições e mesmo que dermos acesso total, suas ações assim como as nossas estão limitadas.**)**Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>** 
+(**Note que existe um outro parâmetro chave faltando no comando acima. Como webadmins,temos nosso perímetro de acões limitado pela policy "permissions boundary" e sempre que criamos recursos como roles ou usuários, precisamos adicionar esses limites de forma hereditaria, esses usuários e roles herdam essas permissões e mesmo que dermos acesso total, suas ações assim como as nossas estão limitadas.**)**Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>** 
 
 <details closed>
 	
