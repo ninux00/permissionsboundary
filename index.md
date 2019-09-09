@@ -16,7 +16,7 @@ Os três elementos principais do "permisisons boundary" estão representados a s
 
 ### Cenário
 
-A empresa em que você trabalha fez deploy de uma aplicação web três camadas na AWS. Vários times trabalham em diferentes aspectos da arquitetura incluindo os admisnistradores web (webadmins) que precisam ter a abilidade de criar Roles do IAM para funções Lambda. Para permitir que eles atuem de forma rápida foi decidido que seria utilizado "permissions boundaries" para delegar as permissões para os webadmins para que eles criem as roles sem a necessidade de solicitar esta tarefa para outros times. É sua tarefa criar as configurações e permissões necessárias para os webadmins e testá-las.
+A empresa em que você trabalha fez deploy de uma aplicação web três camadas na AWS. Vários times trabalham em diferentes aspectos da arquitetura incluindo os admisnistradores web (webadmins) que precisam ter a habilidade de criar Roles do IAM para funções Lambda. Para permitir que eles atuem de forma rápida foi decidido que seria utilizado "permissions boundaries" para delegar as permissões para os webadmins para que eles criem as roles sem a necessidade de solicitar esta tarefa para outros times. É sua tarefa criar as configurações e permissões necessárias para os webadmins e testá-las.
 
 ## Agenda
 
@@ -31,7 +31,7 @@ E então cada individuo/time irá fornecer manualmente as credenciais da Role IA
 **VERIFICAÇÃO** (30 min): Na fase de **VERIFICAÇÃO** cada individuo/time irá atuar como webadmins validando que os requisitos foram configurados corretamente na fase de **CONSTRUÇÃO**.
 
 
-!!! Informação "Exercício em time ou Individualemnte"
+!!! Informação "Exercício em time ou Individualmente"
 	Este workshop pode ser executado como exercício em time ou individualmente. Se realizado como parte de um evento AWS, então vocês provavelmente serão divididos em times entre 2-3 pessoas (você está livre para escolher trabalhar individualemnte se desejar). Se estiver trabalhando em time tente dividir as tarefas entre os membros do time.
 
 ## Requisitos
