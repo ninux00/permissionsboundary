@@ -25,7 +25,7 @@ role_arn = arn:aws:iam::ACCOUNT_ID_FROM_OTHER_TEAM:role/webadmins
 source_profile = default
 ```
 
-**Quando você quiser executar um comando referenciando outro perfil diferente do default, adicione o parametro `--profile` do aws_CLI na linha de comando. Como estamos chamando esse perfil de webadmins você verá que `--profile webadmins` foi adicionado ao final de todos os comandos nesta fase.**
+**Quando você quiser executar um comando referenciando outro perfil diferente do default, adicione o parâmetro `--profile` do aws_CLI na linha de comando. Como estamos chamando esse perfil de webadmins você verá que `--profile webadmins` foi adicionado ao final de todos os comandos nesta fase.**
 
 
 !!! **Informação** "Arquitetura da aplicação"
@@ -36,7 +36,7 @@ source_profile = default
 
 !!! **Atenção**
 <p style="font-size:16px;">
-      Como na fase de Construção, tenha em mente que você precisa adicinonar o Account ID, usar corretamente o "path" e alterar a região especificada caso necessário (caso esteja participando de um evento da AWS, simplemente utilize a região especificada us-east-2). Você também precisa usar o parametro `--profile` em todos os comandos para as tarefas a seguir.
+      Como na fase de Construção, tenha em mente que você precisa adicinonar o Account ID, usar corretamente o "path" e alterar a região especificada caso necessário (caso esteja participando de um evento da AWS, simplemente utilize a região especificada us-east-2). Você também precisa usar o parâmetro `--profile` em todos os comandos para as tarefas a seguir.
 </p>
 
 ## Tarefa 1 - <small>Criar a política</small>
@@ -97,7 +97,7 @@ A role que você vai criar aqui será anexada a função Lambda que você criar�
 ```
 aws iam create-role --role-name NAME_OF_ROLE --path /webadmins/????/ --assume-role-policy-document file://verifytrustpolicy.json --profile webadmins
 ```
-(**Note que existe um outro parâmetro chave faltando no comando acima. Como webadmins,temos nosso perímetro de acões limitado pela policy "permissions boundary" e sempre que criamos recursos como roles ou usuários, precisamos adicionar esses limites de forma hereditaria, esses usuários e roles herdam essas permissões e mesmo que dermos acesso total, suas ações assim como as nossas estão limitadas.**)**Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>** 
+(**Note que existe um outro parâmetro chave faltando no comando acima. Como webadmins,temos nosso perímetro de acões limitado pela policy "permissions boundary" e sempre que criamos recursos como roles ou usuários, precisamos adicionar esses limites de forma hereditária, esses usuários e roles herdam essas permissões e mesmo que concedermos acesso total, suas ações assim como as nossas estão limitadas.**)**Visite <a href="https://docs.aws.amazon.com/cli/latest/reference/" target="_blank"> Documentação AWS CLI para mais informações. </a>** 
 
 <details closed>
 	
