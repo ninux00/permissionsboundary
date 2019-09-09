@@ -233,12 +233,12 @@ Quando você terminar a role **webadmins** deverá ter essas duas políticas ane
 
 ## Tarefa 4 - <small>Teste as permissões dos webadmins</small>
 	
-É hora de chacar o seu trabalho e garantir que as configurações/permissões dos webadmins estão corretas. Você precisa testar as seguintes ações como webadmins:	
+É hora de checar o seu trabalho e garantir que as configurações/permissões dos webadmins estão corretas. Você precisa testar as seguintes ações como webadmins:	
 1. Criar uma política do IAM (usando o perfil de webadmins)
 2. Criar uma Role do IAM (e anexar a política criada como webadmins)
 3. Criar uma função Lambda (e anexar a role criada como webadmins)
 
-Se você não tiver certeza dos comandos para testar, você pode checar todos os detalhes na fase **[VERIFICAÇÃO](./verify.md)**. Quando você tiver validado que seu trabalho está correto, siga para o prossimo passo (**Tarefa 5**) que vai envolver a troca de informações com outro time para que o ele possa verificar o seu trabalho.
+Se você não tiver certeza dos comandos para testar, você pode checar todos os detalhes na fase **[VERIFICAÇÃO](./verify.md)**. Quando você tiver validado que seu trabalho está correto, siga para o próximo passo (**Tarefa 5**) que vai envolver a troca de informações com outro time para que o ele possa verificar o seu trabalho.
 
 ## Tarefa 5 - <small>Pegue as informações necessárias para a fase de **VERIFICAÇÃO**</small>
 
