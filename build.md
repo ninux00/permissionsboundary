@@ -26,7 +26,7 @@ Para configurar o ambiente, expanda e selecione a opção apropriada de acordo c
 	
 Region| Deploy
 ------|-----
-US East 2 (Ohio) | <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=Perm-Bound-Adv&templateURL=https://s3-us-west-2.amazonaws.com/sa-security-specialist-workshops-us-west-2/identity-workshop/permissionboundary/identity-workshop-web-admins-advanced.yaml" target="_blank">![Deploy in us-east-2](./images/deploy-to-aws.png)</a>
+US East 2 (Ohio) | <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=Perm-Bound-Adv&templateURL=https://permissions-boundary-ws.s3.amazonaws.com/Perm-Bound-Template" target="_blank">![Deploy in us-east-2](./images/deploy-to-aws.png)</a>
 	
 1. Click em **Next** na seção da página **Select Template**.
 2. Click em **Next** na seção da página **Specify Details** (o nome da stack será preenchida automaticamente - você pode alterar ou deixar como está)
